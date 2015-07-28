@@ -1,0 +1,54 @@
+﻿@model BusinessTechSolutions.Models.ProfileInformation
+@{
+    ViewBag.Title = "Index";
+}
+
+
+    
+@if(Model.FirstName == null)
+{
+    <h3>Welcome to your home page</h3>
+    <p>Please, insert your profile infromation</p>
+}
+else
+{
+    <h3>Welcome back @Model.FirstName @Model.LastName !</h3>
+}
+<div class="row">
+    <div class="col-lg-2">
+       
+        
+        @if (Model.FirstName == null)
+        {
+            <a href="/Member/InsertProfileInformation" class="btn btn-danger">Insert Profile Information</a>
+        }
+        else
+        {
+            <ul class="list-group">
+                <li class="list-group-item"><h4>Your Profile:</h4>
+          
+                    <img src="http://bloximages.newyork1.vip.townnews.com/columbiatribune.com/content/tncms/assets/v3/editorial/a/36/a36216b3-d79c-53de-8989-5b096b4b940e/5415232d5269d.image.jpg" style="width:auto; height:150px; position:center" />
+              
+                </li>
+                <li class="list-group-item">@Model.FirstName @Model.LastName</li>
+                <li class="list-group-item">Major: @Model.Major</li>
+                <li class="list-group-item">Join Date: @Model.JoinDate.ToString("MMMM dd, yyyy")</li>
+                <li class="list-group-item">
+                    @if (Model.Status)
+                    {
+                        @Html.Raw("Status: Active");
+                    }
+                    else
+                    {
+                        @Html.Raw("Status: Not Active");
+                    }
+
+                </li>
+			
+                </ul>
+            <a href="/Member/InsertProfileInformation" class="btn btn-danger">Update Profile Information</a>
+        }
+        
+    </div>
+</div>
+

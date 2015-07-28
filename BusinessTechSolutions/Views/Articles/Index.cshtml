@@ -1,0 +1,48 @@
+﻿@model IEnumerable<BusinessTechSolutions.Models.Articles>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+
+<a href="/Articles/InsertArticle" class="btn btn-primary btn-sm">Add Article</a>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Titleth>
+            <th>Description</th>
+            <th>Article Url</th>
+            <th>Image Url</th>
+            <th>Featured</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var a in Model)
+        {
+            <tr>
+                <td>@a.Title</td>
+                <td>@a.Description</td>
+                <td>@a.ArticleUrl</td>
+                <td>@a.ImageUrl</td>
+                <td>
+                    @if (a.Featured == false)
+                    {
+                        @Html.Raw("Yes");
+                    }
+                    else
+                    {
+                        @Html.Raw("No");
+                    }
+
+
+                </td>
+                @*<a href="/AdminPage/AspNetUser_Update/@u.Id" class="btn btn-primary btn-sm">Edit</a>></td>*@
+                <td><a href="#" class="btn btn-primary btn-sm">Delete</a></td>
+            </tr>
+        }
+
+    </tbody>
+</table>

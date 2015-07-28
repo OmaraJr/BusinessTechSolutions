@@ -1,0 +1,110 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_NoLayout.cshtml";
+
+}
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index page for the admin view</h2>
+
+
+<div class="tab-content">
+    <div id="Home" class="tab-pane fade in active">
+        <class rules>
+            <p>
+                Welcome to Business Tech Solutions Management Page.
+                ......
+                All authorized individuals have to follow rules in order to keep information consistent
+            </p>
+            <h3>Rules</h3>
+            <ul>Rule # 1</ul>
+                <p>Make sure to add entry added by </p>
+            <ul>Rule # 2</ul>
+            <ul>Rule # 3</ul>
+            <ul>Rule # 4</ul>
+            <ul>Rule # 5</ul>
+        </class>
+    </div>
+    <div id="ClubMembers" class="tab-pane fade">
+       <table class="table table-hover">
+           <thead>
+              <tr>
+                  <th>Id</th>
+                  <th>Email</th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+              </tr>
+           </thead>
+           <tbody>
+               @foreach (var u in ViewBag.Users)
+               {
+                   <tr>
+                       <td>@u.Id</td>
+                       <td>@u.Email</td>
+                       <td>@u.Member</td>
+                       <td>
+                          @if(u.Member == false)
+                           {
+                               <a href="/AdminPage/AspNetUser_Update/@u.Id" class="btn btn-primary btn-sm">Add Member</a>
+                           }
+                           else
+                           {
+                            <input type="submit" value="Is Member" class="btn-success" disabled="disabled" />
+                           }
+                             
+
+                       </td>
+                            @*<a href="/AdminPage/AspNetUser_Update/@u.Id" class="btn btn-primary btn-sm">Edit</a>></td>*@
+                       <td><a href="#" class="btn btn-primary btn-sm">Delete</a></td>
+                   </tr>
+               }
+              
+           </tbody>
+       </table>
+    </div>
+    <div id="Customers" class="tab-pane fade">
+        <a class="btn btn-danger" href="/AdminPage/Customer_Create" role="button">
+            Add a new customer
+            <span class="glyphicon glyphicon-plus"></span>
+        </a>
+
+        <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Contact</th>
+                        <th>Address</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Added By</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var cust in ViewBag.Customers)
+                    {
+                        <tr>
+                            <td>@cust.CustomerName</td>
+                            <td>@cust.CustomerContactPerson</td>
+                            <td>@cust.CustomerAddress</td>
+                            <td>@cust.CustomerEmail</td>
+                            <td>@cust.CustomerPhone</td>
+                            <td>@cust.InsertedBy</td>
+                            <td><a href="/AdminPage/Customer_UpdateInformation/@cust.CustomerId" class="btn btn-primary btn-sm">Edit</a></td>
+                            <td><a href="/AdminPage/Customer_Delete/@cust.CustomerId" class="btn btn-primary btn-sm">Delete</a></td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+
+    </div>
+</div>
+
+
+
