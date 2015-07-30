@@ -18,6 +18,5 @@ namespace BusinessTechSolutions.Models
         public int Likes { get; set; }
         public int Dislikes { get; set; }
         public bool IsApproved { get; set; }
-        public bool NargesIsCool { get; set; }
     }
 }
